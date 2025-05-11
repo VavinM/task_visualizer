@@ -13,6 +13,7 @@ if st.button("Анализировать"):
         st.warning("Пожалуйста, введите хотя бы одну задачу.")
         st.stop()
 
+    # Промпт для модели
     prompt = f"""
 Ты — эксперт по личной эффективности. Раздели задачи по Матрице Эйзенхауэра (4 квадранта):
 
@@ -32,11 +33,9 @@ if st.button("Анализировать"):
 {tasks}
 """
 
-    # ✅ Используем ключ из streamlit secrets
-    api_key = st.secrets["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"]
-
+    # Прямо указываем ключ (небезопасно для публичных репозиториев!)
     headers = {
-        "Authorization": f"Bearer {api_key}",
+        "Authorization": "Bearer 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",
         "Content-Type": "application/json"
     }
 
@@ -49,7 +48,11 @@ if st.button("Анализировать"):
     }
 
     with st.spinner("🔍 Анализируем задачи..."):
-        response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, data=json.dumps(payload))
+        response = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers=headers,
+            data=json.dumps(payload)
+        )
 
     if response.status_code == 200:
         content = response.json()["choices"][0]["message"]["content"]
@@ -58,3 +61,4 @@ if st.button("Анализировать"):
     else:
         st.error("Ошибка при запросе к модели:")
         st.code(response.text)
+

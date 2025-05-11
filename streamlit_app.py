@@ -35,7 +35,7 @@ if st.button("Анализировать"):
 
     # Прямо указываем ключ (небезопасно для публичных репозиториев!)
     headers = {
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer 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",
         "Content-Type": "application/json"
     }
 

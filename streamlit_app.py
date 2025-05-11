@@ -13,7 +13,6 @@ if st.button("Анализировать"):
         st.warning("Пожалуйста, введите хотя бы одну задачу.")
         st.stop()
 
-    # Промпт для модели
     prompt = f"""
 Ты — эксперт по личной эффективности. Раздели задачи по Матрице Эйзенхауэра (4 квадранта):
 
@@ -33,9 +32,11 @@ if st.button("Анализировать"):
 {tasks}
 """
 
-    # Отправка запроса к OpenRouter (DeepSeek)
+    # ✅ Используем ключ из streamlit secrets
+    api_key = st.secrets["openrouter_api_key"]
+
     headers = {
-        "Authorization": "Bearer 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",
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
 
@@ -57,4 +58,3 @@ if st.button("Анализировать"):
     else:
         st.error("Ошибка при запросе к модели:")
         st.code(response.text)
-

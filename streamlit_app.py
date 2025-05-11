@@ -35,7 +35,7 @@ if st.button("Анализировать"):
 
     # Отправка запроса к OpenRouter (DeepSeek)
     headers = {
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer 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",
         "Content-Type": "application/json"
     }
 

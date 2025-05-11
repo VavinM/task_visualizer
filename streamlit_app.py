@@ -40,7 +40,7 @@ if st.button("Анализировать"):
     }
 
     payload = {
-        "model": "deepseek-chat",
+        "model": "deepseek/deepseek-chat:free",
         "messages": [
             {"role": "system", "content": "Ты помощник по планированию задач."},
             {"role": "user", "content": prompt}

@@ -57,3 +57,4 @@ if st.button("Анализировать"):
     else:
         st.error("Ошибка при запросе к модели:")
         st.code(response.text)
+

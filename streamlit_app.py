@@ -33,7 +33,7 @@ if st.button("Анализировать"):
 """
 
     # ✅ Используем ключ из streamlit secrets
-    api_key = st.secrets["openrouter_api_key"]
+    api_key = st.secrets["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"]
 
     headers = {
         "Authorization": f"Bearer {api_key}",
